@@ -3,17 +3,19 @@
   "version": "1.0.0",
   "main": "assert.js",
   "scripts": {
-    "test": "jest",
-    "prepare": "husky"
+    "format": "prettier --write .",
+    "test": "jest"
   },
   "author": "Thanuja pilla <thanujapilla7@gmail.com>",
   "license": "ISC",
-  "description": "",
+  "description": "", 
   "devDependencies": {
-    "@eslint/js": "^9.28.0",
-    "eslint": "^9.28.0",
-    "globals": "^16.2.0",
-    "husky": "^9.1.7",
     "jest": "^29.7.0"
-  }
+  },
+  "lint-staged": {
+  "*.js": [
+    "eslint",
+    "prettier --write ."
+  ]
+}
 }
