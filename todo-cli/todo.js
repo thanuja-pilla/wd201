@@ -1,51 +1,53 @@
 const todoList = () => {
-   all = []
+  let all = [];
   const add = (todoItem) => {
-    all.push(todoItem)
-  }
+    all.push(todoItem);
+  };
   const markAsComplete = (index) => {
-    all[index].completed = true
-  }
+    all[index].completed = true;
+  };
+  const today = new Date();
+  const todayString = today.toISOString().slice(0, 10);
 
   const overdue = () => {
-    let arrayOverdue = []
-       all.forEach((todo)=>{
-           if(todo.dueDate < today) {
-            arrayOverdue.push(todo)
-           }
-       })
-       return arrayOverdue;
-    }
-    
+    let arrayOverdue = [];
+    all.forEach((todo) => {
+      if (todo.dueDate < todayString) {
+        arrayOverdue.push(todo);
+      }
+    });
+    return arrayOverdue;
+  };
+
   const dueToday = () => {
-   let arrayDueToday = []
-   all.forEach((todo) => {
-         if(todo.dueDate === today) {
-            arrayDueToday.push(todo)
-         }
-   })
-   return arrayDueToday;
-  }
+    let arrayDueToday = [];
+    all.forEach((todo) => {
+      if (todo.dueDate === todayString) {
+        arrayDueToday.push(todo);
+      }
+    });
+    return arrayDueToday;
+  };
 
   const dueLater = () => {
-   let arrayDueLater = []
-   all.forEach((todo) => {
-     if(todo.dueDate > today) {
-            arrayDueLater.push(todo)
-         }
-   })
-   return arrayDueLater;
-  }
+    let arrayDueLater = [];
+    all.forEach((todo) => {
+      if (todo.dueDate > todayString) {
+        arrayDueLater.push(todo);
+      }
+    });
+    return arrayDueLater;
+  };
 
   const toDisplayableList = (list) => {
     return list
-        .map((todo) => {
-            const checkbox = todo.completed? "[x]" : "[ ]"
-            const date = todo.dueDate === today ? "" : ` ${todo.dueDate}`
-            return `${checkbox} ${todo.title}${date}`
-        })
-        .join("\n")
-    };
+      .map((todo) => {
+        const checkbox = todo.completed ? "[x]" : "[ ]";
+        const date = todo.dueDate === todayString ? "" : ` ${todo.dueDate}`;
+        return `${checkbox} ${todo.title}${date}`;
+      })
+      .join("\n");
+  };
 
   return {
     all,
@@ -54,7 +56,7 @@ const todoList = () => {
     overdue,
     dueToday,
     dueLater,
-    toDisplayableList
+    toDisplayableList,
   };
 };
 
