@@ -10,36 +10,19 @@ const todoList = () => {
   const todayString = today.toISOString().slice(0, 10);
 
   const overdue = () => {
-    let arrayOverdue = [];
-    all.forEach((todo) => {
-      if (todo.dueDate < todayString) {
-        arrayOverdue.push(todo);
-      }
-    });
-    return arrayOverdue;
+    return all.filter((todo) => todo.dueDate < todayString);
   };
 
   const dueToday = () => {
-    let arrayDueToday = [];
-    all.forEach((todo) => {
-      if (todo.dueDate === todayString) {
-        arrayDueToday.push(todo);
-      }
-    });
-    return arrayDueToday;
+    return all.filter((todo) => todo.dueDate === todayString);
   };
 
   const dueLater = () => {
-    let arrayDueLater = [];
-    all.forEach((todo) => {
-      if (todo.dueDate > todayString) {
-        arrayDueLater.push(todo);
-      }
-    });
-    return arrayDueLater;
+    return all.filter((todo) => todo.dueDate > todayString);
   };
 
   const toDisplayableList = (list) => {
+    const todayString = today.toISOString().slice(0, 10);
     return list
       .map((todo) => {
         const checkbox = todo.completed ? "[x]" : "[ ]";
