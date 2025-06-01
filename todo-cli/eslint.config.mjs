@@ -5,16 +5,22 @@ import { defineConfig } from "eslint/config";
 export default defineConfig([
   {
     env: {
+      commonjs: true,
       jest: true,
       node: true,
       es6: true,
     },
     extends: ["eslint:recommended"],
+    overrides: [],
+    parserOptions: {
+      ecmaVersion: "latest",
+    },
+    rules: {},
   },
   {
     files: ["**/*.{js,mjs,cjs}"],
-    plugins: { js },
-    extends: ["js/recommended"],
+    plugins: ["js"],
+    extends: ["plugin:js/recommended"],
   },
   {
     files: ["**/*.js"],
