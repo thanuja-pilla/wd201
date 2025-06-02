@@ -12,6 +12,7 @@ describe("TodoList Test suite", () => {
       dueDate: new Date().toISOString().slice(0, 10),
     });
   });
+  //testing pre-commit hook
   test("Should add new todo", () => {
     const todoItemsCount = todos.all.length;
     todos.add({
@@ -47,7 +48,7 @@ describe("TodoList Test suite", () => {
     todos.add({ title: "Overdue Task", completed: false, dueDate });
     const overdueItems = todos.overdue();
     expect(overdueItems.some((todo) => todo.title === "Overdue Task")).toBe(
-      true
+      true,
     );
   });
   test("to check retrieval of today items", () => {
@@ -66,7 +67,7 @@ describe("TodoList Test suite", () => {
     todos.add({ title: "due later Task", completed: false, dueDate });
     const dueLaterItems = todos.dueLater();
     expect(dueLaterItems.some((todo) => todo.title === "due later Task")).toBe(
-      true
+      true,
     );
   });
 
