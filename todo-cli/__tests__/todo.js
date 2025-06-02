@@ -1,4 +1,4 @@
-const todoList = require("../todo.js");
+const todoList = require("../todo");
 
 describe("TodoList Test suite", () => {
   let todos;
